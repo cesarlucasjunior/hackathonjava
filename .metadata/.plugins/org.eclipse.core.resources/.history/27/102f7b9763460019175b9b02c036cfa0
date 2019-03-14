@@ -13,60 +13,65 @@ import javax.servlet.http.HttpServletResponse;
 import com.stefanini.hackathon.model.Cachorro;
 
 @WebServlet("/cachorro")
-public class CachorroServlet extends HttpServlet {
+public class CachorroServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-
+	
 	public CachorroServlet() {
 		super();
 	}
-
+	
 	public void init() throws ServletException {
 		// Método acionado pelo container depois que o servlet é criado
-		// É criado apenas umas vez durante todo o ciclo de vida da servlet
+		//É criado apenas umas vez durante todo o ciclo de vida da servlet
 		System.out.println("Método init acionado!");
-
+	
 	}
-
+	
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// Método acionado após request do usuário
+		//Método acionado após request do usuário
 		System.out.println("Implementando método service.");
 		super.service(req, resp);
 	}
-
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("Método doGet() acionado!");
-
-		// Criação lista cachorro
+		
+		//Criação lista cachorro
 		List<Cachorro> cachorros = new ArrayList<Cachorro>();
 		cachorros.add(new Cachorro("Pingo", 1));
 		cachorros.add(new Cachorro("Apolo", 2));
 		cachorros.add(new Cachorro("Shrek", 3));
 		cachorros.add(new Cachorro("Lucy", 4));
 		cachorros.add(new Cachorro("Ringo", 5));
-
-		// Retorno doGet()
+		
+		//Retorno doGet()
 		resp.getWriter().append(cachorros.toString());
-		// destroy();
+		//destroy();
 	}
-
+	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("Método doPost() acionado!");
 		super.doPost(req, resp);
 	}
-
+	
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("Método doDelete() acionado!");
 		super.doDelete(req, resp);
 	}
-
+	
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("Método doPut() acionado!");
 		super.doPut(req, resp);
 	}
-
+	
+	
 	public void destroy() {
 		System.out.println("Método destroy() acionado!");
 		super.destroy();
 	}
+	
+	
 
+	
+	
 }
